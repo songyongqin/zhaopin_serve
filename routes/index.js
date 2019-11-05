@@ -33,6 +33,7 @@ router.post('/login', (req, res) => {
     if(!user) {
       res.send({code:1, msg: '用户名或者密码错误'})
     }else{
+      res.cookie('userid', user._id, {maxAge: 1000*60*60*24}) //引号
       res.send({code:0,data:user})
     }
   })
@@ -50,7 +51,7 @@ router.post('/update',(req, res) => {
   UserModel.findByIdAndUpdate({_id:userid},user,(error,oldUser) => {
     if(!oldUser) {
       //如果没有查询到user，即前端cookie失效了
-      res.clearCookie(userid)
+      res.clearCookie('userid')
       return res.send({code:1,msg:'请先登录'})
     }
     //查询到了，我们需要合并一个新对象返回,但不希望返回oldUser中的password
@@ -58,6 +59,19 @@ router.post('/update',(req, res) => {
     const data = Object.assign(user,{_id, username, type})
     res.send({code:0,data})
   })
+})
+
+//获取个人信息路由
+router.get('/user', (req, res) => {
+  console.log(111)
+  const userid = req.cookies.userid
+  if(userid) {
+    UserModel.findOne({_id:userid},filter,(error,user) => {
+      res.send({code:0,data:user})
+    })
+  }else{ //cookie中没有userid
+    res.send({code:1,msg:'请先登录'})
+  }
 })
 
 
