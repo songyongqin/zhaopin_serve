@@ -1,13 +1,8 @@
 var express = require('express');
 const md5 = require('blueimp-md5')
 const filter = {password:0} //指定过滤的熟悉
-
-<<<<<<< HEAD
-const {UserModel} = require('../db/models')
-=======
 const {UserModel} = require('../db/models.js')
 const filter = {password:0}
->>>>>>> 46079d8afc00e34c02752ae7ae81c280482efbaa
 var router = express.Router();
 
 //注册
