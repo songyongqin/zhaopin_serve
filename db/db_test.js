@@ -32,7 +32,7 @@ function testSave(){
         console.log(user)
     })
 }
-// testSave()
+testSave()
 //3.2通过Model的find()/findOne（）查询多个或一个数据
 function testFind() {
     UserModel.find((error,users)=>{
@@ -59,4 +59,4 @@ function testDelete() {
         console.log('remove',error,doc)
     })
 }
-testDelete()
+// testDelete()
