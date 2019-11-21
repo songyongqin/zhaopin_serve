@@ -75,4 +75,13 @@ router.get('/user', (req, res) => {
 })
 
 
+//获取用户列表信息
+router.get('/userlist', (req, res) => {
+  console.log(req)
+  const {type} = req.query
+  UserModel.find({type}, filter, (error, user) => {
+    res.send({code:0,data:user})
+  })
+})
+
 module.exports = router;
