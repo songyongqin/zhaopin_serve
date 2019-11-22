@@ -1,6 +1,5 @@
 var express = require('express');
 const md5 = require('blueimp-md5')
-
 const {UserModel, ChatModel} = require('../db/models.js')
 const filter = {password:0}
 var router = express.Router();
@@ -11,6 +10,7 @@ router.post('/register', (req, res) => {
   const {username,password,type} = req.body
   //处理
   UserModel.findOne({username},(error,user) => {
+    console.log(user)
     if(user) {
       res.send({code:1, msg: '此用户已存在'})
     }else{
@@ -21,6 +21,7 @@ router.post('/register', (req, res) => {
       })
     }
   })
+
   //返回响应数据
 });
 
@@ -75,6 +76,7 @@ router.get('/user', (req, res) => {
   }
 })
 
+<<<<<<< HEAD
 //获取用户列表信息
 router.get('/userlist', (req, res) => {
   const {type} = req.query
@@ -118,4 +120,6 @@ router.post('/readmsg', (req, res) => {
 
 
 
+=======
+>>>>>>> 15d2556ffdfb5602a69ae41418915c1b4d65bd58
 module.exports = router;

@@ -20,6 +20,7 @@ const userSchema = mongoose.Schema({
   company: {type:String}, //公司名称
   salary: {type:String}, //薪资
 })
+
 const UserModel = mongoose.model('user',userSchema)
 
 exports.UserModel = UserModel   
