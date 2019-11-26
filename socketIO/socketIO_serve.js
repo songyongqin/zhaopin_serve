@@ -9,6 +9,7 @@ module.exports = function (server) {
       const create_time = new Date().getTime()
       new ChatModel({from, to, content, chat_id, create_time}).save((err,chatMsgs) => {
         io.emit('receiveMsg', chatMsgs)
+        console.log('服务器发送消息' + chatMsgs)
       })
     })
   })

@@ -75,8 +75,6 @@ router.get('/user', (req, res) => {
     res.send({code:1,msg:'请先登录'})
   }
 })
-
-<<<<<<< HEAD
 //获取用户列表信息
 router.get('/userlist', (req, res) => {
   const {type} = req.query
@@ -116,10 +114,4 @@ router.post('/readmsg', (req, res) => {
   })
 })
 
-
-
-
-
-=======
->>>>>>> 15d2556ffdfb5602a69ae41418915c1b4d65bd58
 module.exports = router;
